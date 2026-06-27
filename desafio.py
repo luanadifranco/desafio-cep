@@ -2,7 +2,9 @@
 lendo_cidades = True
 cep_alvo = ""
 lista_cidades = []
+
 with open("dados.txt", "r" , encoding="utf-8") as arquivos:
+
     for linha in arquivos:
         print(linha)
         linha_limpa = linha.strip()
@@ -28,7 +30,7 @@ for cidade in lista_cidades:
     cep_inicial = int(cidade[1])
     cep_final = int(cidade[2])
 
-    if cep_buscado >= cep_inicial and cep_buscado<= cep_final:
+    if cep_buscado >= cep_inicial and cep_buscado <= cep_final:
         print("Cidade encontrada", nome_cidade)
         encontrou_cidade = True
         
