@@ -25,7 +25,8 @@ with open("dados2.txt", "r", encoding="utf-8") as arquivos:
             ceps_finais = linha_limpa
             print("CEP final encontrado: ", ceps_finais)
 
-# ETAPA 2 - SEPARAR OS CEPS FINAIS
+# ETAPA 2 - SEPARAR OS CEPS FINAIS E DESCORBRI ORIGEM E DESTINO
+
 pedacos_ceps = ceps_finais.split(",")
 cep_origem = int(pedacos_ceps[0])
 cep_destino = int(pedacos_ceps[1])
@@ -45,8 +46,10 @@ for cidade in lista_cidades:
     if cep_destino >= cep_inicial and cep_destino <= cep_final:
         cidade_destino = nome_cidade
 
-print(f"Cidade de destino: Cidade {cidade_destino} (cep: {cep_destino})")
 print(f"Cidade de origem: Cidade {cidade_origem} (cep: {cep_origem})")
+print(f"Cidade de destino: Cidade {cidade_destino} (cep: {cep_destino})")
+
+# ETAPA 3 - CRIAR O GRAFO E ENCONTRAR AS CONEXÕES ENTRE AS CIDADES
 
 grafo = {}
 
@@ -62,6 +65,8 @@ for conexao in lista_conexoes:
     if destino not in grafo:
         grafo[destino] = {}
     grafo[destino][origem] = custo
+
+# ETAPA 4 - IMPLEMENTAR O ALGORITMO DE DIJKSTRA PARA ENCONTRAR O MENOR CAMINHO
 
 import heapq
 
